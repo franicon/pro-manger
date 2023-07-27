@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
 
 const projectsSchema = new mongoose.Schema({
-    projectTitle: {
+    title: {
         type: String,
         required: true
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true
     },
     thumbnail: {
         type: String,
     },
-    projectDescription: {
+    description: {
         type: String,
         required: true
     },
@@ -21,12 +26,11 @@ const projectsSchema = new mongoose.Schema({
         default: 'In progress'
     },
     deadline: {
-        type: Date(),
+        type: Date,
         required: true
     },
-    attachFiles: {
+    files: {
         type: [String],
-        required: true
     },
     privacy: {
         type: String,
@@ -39,7 +43,8 @@ const projectsSchema = new mongoose.Schema({
     members: {
         type: [String]
     },
+}, {
     timestamps: true
 });
 
-mongoose.model('Project', projectsSchema);
+module.exports = mongoose.model('Project', projectsSchema);
