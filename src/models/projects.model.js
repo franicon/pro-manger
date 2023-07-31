@@ -1,9 +1,8 @@
 const path = require("path");
+const multer  = require('multer');
 const mongo = require('./projects.mongo');
 const attach = require('../@cloud/index');
 const { generateSlug } = require('../helpers/index');
-
-const file = path.join(__dirname, '../../src/shop-on.png');
 
 const project = {
     title: 'Building Shop-on market place',
@@ -19,7 +18,7 @@ const project = {
 saveNewProject(project).then(r => r);
 
 async function saveNewProject(projects) {
-    const projectAttach = await attach(file);
+    const projectAttach = await attach(allFiles);
     const genSlug = generateSlug(projects.title);
     const found = await findProject(projects.slug);
     const newProject = Object.assign(projects, {
