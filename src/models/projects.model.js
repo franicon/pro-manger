@@ -12,13 +12,13 @@ const project = {
     status: 'In progress',
     deadline: Date.now(),
     privacy: 'Private',
-    teamLead: 'Yomi Aluk'
+    teamLead: 'Yomi Aluko'
 }
 
 saveNewProject(project).then(r => r);
 
 async function saveNewProject(projects) {
-    const projectAttach = await attach(allFiles);
+    const projectAttach = await attach();
     const genSlug = generateSlug(projects.title);
     const found = await findProject(projects.slug);
     const newProject = Object.assign(projects, {
