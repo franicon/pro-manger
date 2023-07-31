@@ -1,4 +1,19 @@
 const mongo = require('./projects.mongo');
+const cloudinary = require('cloudinary').v2;
+const path = require('path');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_SECRER_KEY,
+    secure: true,
+});
+
+const file = path.join(__dirname, './projects.mongo.js');
+console.log(file)
+
+cloudinary.uploader.upload(file).then(r => console.log(r) );
+
 
 const project = {
     title: 'Building Shop-on market place',
@@ -9,7 +24,7 @@ const project = {
     deadline: Date.now(),
     attach: 'architecture.figma',
     privacy: 'Private',
-    teamLead: 'Yomi Aluko'
+    teamLead: 'Yomi Aluk'
 }
 
 const generateSlug = (title) => {
@@ -22,7 +37,7 @@ const generateSlug = (title) => {
 }
 
 
-saveNewProject(project).then(r => r);
+// saveNewProject(project).then(r => r);
 
 async function saveNewProject(projects) {
     const genSlug = generateSlug(projects.title);
