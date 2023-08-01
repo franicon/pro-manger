@@ -1,9 +1,8 @@
 const { getProject, getAllProjects, saveNewProject } = require('../../models/projects.model');
 
-async function httpCreateProject (req, files, res) {
-    // const project = req.files;
-    // res.status(200).json(project);
-    // console.log(project)
+async function httpCreateProject (req, res) {
+    const project = req.body;
+    console.log(project)
     // await saveNewProject(body);
     // res.status(200).json('Project successfully created');
 }

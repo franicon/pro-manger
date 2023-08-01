@@ -5,7 +5,7 @@ const upload = require('../@multer/index');
 const fs = require("fs");
 
 const file  = async (req, res, next) => {
-    await upload.array('image')
+    await upload.array('file')
     const uploader = async (path) => await attach(path);
 
     const urls = [];

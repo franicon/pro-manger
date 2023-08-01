@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
 // validation
 
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpg' || file.mimetype === 'file/pdf') {
+    if (file.mimetype === 'file/jpg' || file.mimetype === 'file/pdf') {
         cb(null, true)
     } else {
         cb({message: 'unsupported file format'}, false)
@@ -22,7 +22,8 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: storage,
     limits: {fileSize: 1024 * 1024},
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
 });
+
 
 module.exports = upload
