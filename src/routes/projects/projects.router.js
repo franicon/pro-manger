@@ -1,9 +1,10 @@
 const express = require('express');
 
-const { httpCreateProject, file } = require("./project.controller");
+const { httpCreateProject } = require('./project.controller');
+const file = require('../../@middleware/uploads');
 
 const projectsRouter = express.Router();
 
-projectsRouter.post('/', httpCreateProject);
+projectsRouter.post('/', file, httpCreateProject);
 
 module.exports = projectsRouter;

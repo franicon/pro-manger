@@ -1,5 +1,4 @@
 const mongo = require('./projects.mongo');
-const attach = require('../@cloud/index');
 const { generateSlug } = require('../helpers/index');
 
 const project = {
