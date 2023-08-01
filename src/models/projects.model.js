@@ -1,33 +1,6 @@
-const path = require("path");
-const multer  = require('multer');
 const mongo = require('./projects.mongo');
 const attach = require('../@cloud/index');
 const { generateSlug } = require('../helpers/index');
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, new Date().toISOString() + '-' + file.originalname)
-    }
-});
-
-// validation
-
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpg' || file.mimetype === 'file/pdf') {
-        cb(null, true)
-    } else {
-        cb({message: 'unsupported file format'}, false)
-    }
-}
-
-const upload = multer({
-    storage: storage,
-    limits: {fileSize: 1024 * 1024},
-    fileFilter: fileFilter
-});
 
 const project = {
     title: 'Building Shop-on market place',
@@ -69,5 +42,4 @@ module.exports = {
     findProject,
     getAllProjects,
     saveNewProject,
-    upload
 }
