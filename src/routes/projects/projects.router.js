@@ -6,6 +6,6 @@ const upload = require("../../@multer");
 
 const projectsRouter = express.Router();
 
-projectsRouter.post('/', upload.array('file'), httpCreateProject);
+projectsRouter.post('/',file, httpCreateProject);
 
 module.exports = projectsRouter;
