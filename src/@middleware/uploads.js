@@ -10,7 +10,7 @@ const file  = async (req, res, next) => {
 
     const urls = [];
 
-    const files = await req.files
+    const files = await req.file
 
     // for (const file of files) {
     //     const {path} = file
@@ -31,6 +31,8 @@ const file  = async (req, res, next) => {
     } catch (err) {
         res.status(400).json({error: err})
     }
+
+    console.log(req.path)
 
     next()
 }
