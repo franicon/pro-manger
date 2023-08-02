@@ -5,13 +5,12 @@ const upload = require('../@multer/index');
 const fs = require("fs");
 
 const file  = async (req, res, next) => {
-    await upload.array('file')
+    await upload.array('image')
     const uploader = async (path) => await attach(path);
 
     const urls = [];
 
-    const files = await req.file
-
+    const files = req.files
     // for (const file of files) {
     //     const {path} = file
     //
@@ -21,18 +20,16 @@ const file  = async (req, res, next) => {
     //
     //     fs.unlinkSync(path);
     // }
-    console.log(files);
 
     try {
+        console.log(files)
         res.status(200).json({
             message: 'Project created successfully',
             data: files
         });
     } catch (err) {
-        res.status(400).json({error: err})
+        res.status(400).json({error: err});
     }
-
-    console.log(req.path)
 
     next()
 }
