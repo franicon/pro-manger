@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const path = require("path");
 
 const attach = require('../@cloud/index');
 const upload = require('../@multer/index');
@@ -10,8 +9,9 @@ const file  = async (req, res, next) => {
         const urls = [];
 
         const files = req.files
+
         for (const file of files) {
-            const {path} = file
+            const { path } = file
 
             const newPath = await uploader(path);
 
@@ -19,9 +19,10 @@ const file  = async (req, res, next) => {
 
             fs.unlinkSync(path);
         }
-        console.log(req.files, 'files')
-        if (!req.files) return res.json({error: 'Something went-wrong'})
-        next()
+
+        if (!req.files) return res.json({error: 'Something went-wrong'});
+        res.json({data: urls})
+        next();
     });
 }
 
