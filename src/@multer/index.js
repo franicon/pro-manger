@@ -1,8 +1,11 @@
 const multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../multer/uploads/')
+        const path = `./upload/`;
+        fs.mkdirSync(path, { recursive: true });
+        cb(null, path)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
