@@ -5,6 +5,6 @@ const { httpCreateProject } = require('./project.controller');
 
 const projectsRouter = express.Router();
 
-projectsRouter.post('/',file, httpCreateProject);
+projectsRouter.post('/', file ,httpCreateProject);
 
 module.exports = projectsRouter;
