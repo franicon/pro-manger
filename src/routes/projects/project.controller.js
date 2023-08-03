@@ -1,10 +1,15 @@
 const { getProject, getAllProjects, saveNewProject } = require('../../models/projects.model');
 
-async function httpCreateProject (req, res) {
-    const project = req.body;
-    // await saveNewProject(body);
-    const uploads = req.attach
-    res.status(200).json({ files: uploads, context: project});
+async function httpCreateProject(req, res) {
+    try {
+        const context = req.body;
+        const attach = 'hello';
+        const project = await saveNewProject(context, attach);
+        res.status(201).json(project);
+    } catch (err) {
+        res.status(400).json({error: err});
+
+    }
 }
 
 module.exports = {
