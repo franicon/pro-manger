@@ -12,16 +12,16 @@ const file = async (req, res, next) => {
 
         for (const file of files) {
             const { path } = file
-
             const newPath = await uploader(path);
 
             urls.push(newPath);
 
             fs.unlinkSync(path);
         }
-
         if (!req.files) return res.json({error: 'Something went-wrong'});
-        res.send({data: urls})
+
+        req.attach = urls;
+
         next();
     });
 }

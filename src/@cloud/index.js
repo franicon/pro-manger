@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 async function attach(file) {
-    await cloudinary.uploader.upload(file, {folder: 'pro-manager'}).then(r => r ).catch(err => console.log(err));
+    return await cloudinary.uploader.upload(file, {folder: 'pro-manager'}).then(r => r.url).catch(err => console.log(err));
 
 }
 
