@@ -5,13 +5,12 @@ const attach = require('../@cloud/index');
 const upload = require('../@multer/index');
 
 const file  = async (req, res, next) => {
-    return upload.single('image')(req, res, () => {
-        // Remember, the middleware will call it's next function
-        // so we can inject our controller manually as the next()
-
-        if (!req.file) return res.json({ error: 'Something went-wrong' })
+    return upload.array('image')(req, res, () => {
+        console.log(req.files,  'files')
+        if (!req.files) return res.json({ error: 'Something went-wrong' })
         next()
-    })    // const uploader = async (path) => await attach(path);
+    })
+    // const uploader = async (path) => await attach(path);
 
     // const urls = [];
     //
