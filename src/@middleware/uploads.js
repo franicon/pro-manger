@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const upload = require('../@multer/index');
 const { attach } = require('../@cloud/index');
+const upload = require('../@multer/index');
 
 const file = async (req, res, next) => {
     upload.array('image')(req, res, async () => {
