@@ -11,5 +11,6 @@ async function attach(file) {
     return await cloudinary.uploader.upload(file, {folder: 'pro-manager'}).then(r => r.url).catch(err => console.log(err));
 
 }
+async function removeImages() {}
 
-module.exports = attach
+module.exports = {removeImages, attach}
