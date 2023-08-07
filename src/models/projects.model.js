@@ -12,15 +12,12 @@ const project = {
     teamLead: 'Yomi Aluko'
 }
 
-// saveNewProject(project).then(r => r);
-
-async function saveNewProject(projects) {
-    // const projectAttach = await attach();
+async function saveNewProject(projects, attach) {
     const genSlug = generateSlug(projects.title);
     const found = await findProject(projects.slug);
     const newProject = Object.assign(projects, {
         slug: genSlug,
-        // files: projectAttach
+        files: attach
     });
 
     if (!found) {
