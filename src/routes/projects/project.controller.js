@@ -3,7 +3,7 @@ const { getProject, getAllProjects, saveNewProject } = require('../../models/pro
 async function httpCreateProject(req, res) {
     try {
         const context = req.body;
-        const attach = ['hello'];
+        const attach = req.files;
 
         const project = await saveNewProject(context, attach);
         res.status(201).json(project);
